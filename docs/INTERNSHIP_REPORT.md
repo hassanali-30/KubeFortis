@@ -1,13 +1,13 @@
-# KubeNova Internship Project Report
+# KubeFortis Internship Project Report
 
 ## Title
 
-KubeNova: Design and Implementation of a Resilient Stateful Full-Stack
+KubeFortis: Design and Implementation of a Resilient Stateful Full-Stack
 Application on a Three-Node Kubernetes Cluster
 
 ## Abstract
 
-KubeNova designs and implements an on-premises Kubernetes environment on
+KubeFortis designs and implements an on-premises Kubernetes environment on
 three Ubuntu virtual machines. The platform uses kubeadm and containerd for
 cluster bootstrapping, Calico for container networking and policy enforcement,
 Longhorn for two-replica persistent storage, and MetalLB for local-network

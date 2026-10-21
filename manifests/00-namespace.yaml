@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: fullstack
+  labels:
+    app.kubernetes.io/part-of: kubernetes-fullstack-lab
+

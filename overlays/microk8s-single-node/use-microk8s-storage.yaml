@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-pvc
+  namespace: fullstack
+spec:
+  storageClassName: microk8s-hostpath
+

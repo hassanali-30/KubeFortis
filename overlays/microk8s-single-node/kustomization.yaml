@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../manifests
+patches:
+  - path: delete-longhorn-storageclass.yaml
+  - path: use-microk8s-storage.yaml
+  - path: expose-frontend-nodeport.yaml
+

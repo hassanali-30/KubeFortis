@@ -1,0 +1,8 @@
+config.env
+manifests/03-db-secret.yaml
+manifests/09-metallb-config.yaml
+evidence/*
+!evidence/README.md
+*.log
+.DS_Store
+

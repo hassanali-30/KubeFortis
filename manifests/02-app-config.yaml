@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db-config
+  namespace: fullstack
+  labels:
+    app.kubernetes.io/part-of: kubernetes-fullstack-lab
+data:
+  DB_HOST: postgres
+  DB_PORT: "5432"
+  DB_NAME: appdb
+  PGRST_DB_SCHEMAS: api
+  PGRST_DB_ANON_ROLE: web_anon
+

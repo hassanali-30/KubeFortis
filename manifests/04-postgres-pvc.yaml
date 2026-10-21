@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-pvc
+  namespace: fullstack
+  labels:
+    app.kubernetes.io/name: postgres
+    app.kubernetes.io/part-of: kubernetes-fullstack-lab
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: longhorn-2replica
+  resources:
+    requests:
+      storage: 5Gi
+

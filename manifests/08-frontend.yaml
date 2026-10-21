@@ -5,7 +5,7 @@ metadata:
   namespace: fullstack
   labels:
     app.kubernetes.io/name: frontend
-    app.kubernetes.io/part-of: kubernetes-fullstack-lab
+    app.kubernetes.io/part-of: kubefortis
 data:
   index.html: |
     <!doctype html>
@@ -107,7 +107,7 @@ metadata:
   namespace: fullstack
   labels:
     app.kubernetes.io/name: frontend
-    app.kubernetes.io/part-of: kubernetes-fullstack-lab
+    app.kubernetes.io/part-of: kubefortis
 spec:
   replicas: 2
   revisionHistoryLimit: 3
@@ -123,7 +123,7 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: frontend
-        app.kubernetes.io/part-of: kubernetes-fullstack-lab
+        app.kubernetes.io/part-of: kubefortis
     spec:
       securityContext:
         fsGroup: 101
@@ -205,7 +205,7 @@ metadata:
   namespace: fullstack
   labels:
     app.kubernetes.io/name: frontend
-    app.kubernetes.io/part-of: kubernetes-fullstack-lab
+    app.kubernetes.io/part-of: kubefortis
 spec:
   type: LoadBalancer
   selector:

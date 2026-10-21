@@ -12,7 +12,7 @@ MetalLB. The pod CIDR must not overlap the LAN.
 Copy the repository to each VM, then create the configuration file on every VM:
 
 ```bash
-cd kubernetes-fullstack-internship
+cd KubeFortis
 cp config.example.env config.env
 nano config.env
 chmod +x cluster/*.sh scripts/*.sh
@@ -60,7 +60,7 @@ less than roughly 15 GiB free space.
 ## 3. Install Kubernetes packages on every node
 
 ```bash
-cd kubernetes-fullstack-internship
+cd KubeFortis
 ./cluster/02-install-kubernetes.sh
 ```
 

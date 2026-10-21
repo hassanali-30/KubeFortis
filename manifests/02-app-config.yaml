@@ -4,7 +4,7 @@ metadata:
   name: db-config
   namespace: fullstack
   labels:
-    app.kubernetes.io/part-of: kubernetes-fullstack-lab
+    app.kubernetes.io/part-of: kubefortis
 data:
   DB_HOST: postgres
   DB_PORT: "5432"

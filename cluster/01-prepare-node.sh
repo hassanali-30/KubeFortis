@@ -24,8 +24,11 @@ esac
 echo "Preparing $(hostname) as $NODE_NAME"
 sudo hostnamectl set-hostname "$NODE_NAME"
 
-sudo sed -i '/# BEGIN kubernetes-fullstack-lab/,/# END kubernetes-fullstack-lab/d' /etc/hosts
-printf '\n# BEGIN kubernetes-fullstack-lab\n%s %s\n%s %s\n%s %s\n# END kubernetes-fullstack-lab\n' \
+sudo sed -i \
+  -e '/# BEGIN kubernetes-fullstack-lab/,/# END kubernetes-fullstack-lab/d' \
+  -e '/# BEGIN kubefortis/,/# END kubefortis/d' \
+  /etc/hosts
+printf '\n# BEGIN kubefortis\n%s %s\n%s %s\n%s %s\n# END kubefortis\n' \
   "$CONTROL_PLANE_IP" "$CONTROL_PLANE_NAME" \
   "$WORKER1_IP" "$WORKER1_NAME" \
   "$WORKER2_IP" "$WORKER2_NAME" | sudo tee -a /etc/hosts >/dev/null

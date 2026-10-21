@@ -10,7 +10,7 @@ These substitutions make the demo runnable without claiming storage or node
 high availability that a single VM cannot provide.
 
 ```bash
-cd ~/kubernetes-fullstack-internship
+cd ~/KubeFortis
 chmod +x scripts/deploy-microk8s.sh
 ./scripts/deploy-microk8s.sh
 ```

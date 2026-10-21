@@ -5,7 +5,7 @@ metadata:
   namespace: fullstack
   labels:
     app.kubernetes.io/name: backend
-    app.kubernetes.io/part-of: kubernetes-fullstack-lab
+    app.kubernetes.io/part-of: kubefortis
 spec:
   replicas: 2
   revisionHistoryLimit: 3
@@ -21,7 +21,7 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: backend
-        app.kubernetes.io/part-of: kubernetes-fullstack-lab
+        app.kubernetes.io/part-of: kubefortis
     spec:
       securityContext:
         seccompProfile:
@@ -111,7 +111,7 @@ metadata:
   namespace: fullstack
   labels:
     app.kubernetes.io/name: backend
-    app.kubernetes.io/part-of: kubernetes-fullstack-lab
+    app.kubernetes.io/part-of: kubefortis
 spec:
   type: ClusterIP
   selector:

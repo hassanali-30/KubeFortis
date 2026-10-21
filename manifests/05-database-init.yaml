@@ -5,7 +5,7 @@ metadata:
   namespace: fullstack
   labels:
     app.kubernetes.io/name: postgres
-    app.kubernetes.io/part-of: kubernetes-fullstack-lab
+    app.kubernetes.io/part-of: kubefortis
 data:
   01-init.sql: |
     CREATE SCHEMA IF NOT EXISTS api;

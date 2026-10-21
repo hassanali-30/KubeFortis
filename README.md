@@ -3,9 +3,9 @@
 ### Resilient Full-Stack Kubernetes Platform
 
 KubeFortis is an internship-ready, on-premises Kubernetes platform built from
-three Ubuntu 24.04 virtual machines. It demonstrates cluster bootstrapping, replicated
-persistent storage, service discovery, load balancing, workload resilience,
-network isolation, and recovery testing.
+three Ubuntu 24.04 virtual machines. It demonstrates cluster bootstrapping,
+replicated persistent storage, service discovery, load balancing, workload
+resilience, network isolation, and recovery testing.
 
 ## What this project deploys
 
@@ -81,11 +81,13 @@ MetalLB addresses are free and outside the DHCP pool.
 
 ## Quick start
 
-### 1. Configure the project
+### 1. Clone and configure the project
 
 Run on the control-plane VM after copying this repository to it:
 
 ```bash
+git clone https://github.com/hassanali-30/KubeFortis.git
+cd KubeFortis
 cp config.example.env config.env
 nano config.env
 set -a

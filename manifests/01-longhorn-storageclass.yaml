@@ -3,7 +3,7 @@ kind: StorageClass
 metadata:
   name: longhorn-2replica
   labels:
-    app.kubernetes.io/part-of: kubernetes-fullstack-lab
+    app.kubernetes.io/part-of: kubefortis
 provisioner: driver.longhorn.io
 allowVolumeExpansion: true
 reclaimPolicy: Retain

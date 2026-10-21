@@ -3,5 +3,5 @@ kind: Namespace
 metadata:
   name: fullstack
   labels:
-    app.kubernetes.io/part-of: kubernetes-fullstack-lab
+    app.kubernetes.io/part-of: kubefortis
 

@@ -32,8 +32,22 @@ jobs:
         run: |
           curl --fail --location --silent --show-error \
             https://github.com/yannh/kubeconform/releases/download/v0.8.0/kubeconform-linux-amd64.tar.gz \
-            | tar -xz kubeconform
+            --output kubeconform.tar.gz
+          echo '9bc2bffbf71f261128533edaf912153948b7ff238f9a531ae6d34466ec287883  kubeconform.tar.gz' \
+            | sha256sum --check --strict
+          tar -xzf kubeconform.tar.gz kubeconform
           sudo install kubeconform /usr/local/bin/kubeconform
+
+      - name: Install kubectl for Kustomize rendering
+        run: |
+          curl --fail --location --silent --show-error \
+            https://dl.k8s.io/release/v1.36.0/bin/linux/amd64/kubectl \
+            --output kubectl
+          curl --fail --location --silent --show-error \
+            https://dl.k8s.io/release/v1.36.0/bin/linux/amd64/kubectl.sha256 \
+            --output kubectl.sha256
+          echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check --strict
+          sudo install kubectl /usr/local/bin/kubectl
 
       - name: Validate against Kubernetes schemas
         run: >-
@@ -43,4 +57,13 @@ jobs:
           -kubernetes-version 1.36.0
           -ignore-filename-pattern '.*example.*|kustomization.yaml'
           manifests
+
+      - name: Build and validate MicroK8s overlay
+        run: |
+          kubectl kustomize overlays/microk8s-single-node > microk8s-rendered.yaml
+          kubeconform \
+            -strict \
+            -summary \
+            -kubernetes-version 1.36.0 \
+            microk8s-rendered.yaml
 

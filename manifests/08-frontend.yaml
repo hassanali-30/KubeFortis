@@ -34,7 +34,7 @@ data:
     </head>
     <body>
       <main>
-        <div class="eyebrow">KubeNova Platform</div>
+        <div class="eyebrow">KubeFortis Platform</div>
         <h1>Resilience, Engineered.</h1>
         <p class="lead">A three-node kubeadm cluster serving live PostgreSQL data through PostgREST and nginx, with Longhorn replication and MetalLB access.</p>
         <section class="panel">

@@ -15,6 +15,10 @@ chmod +x scripts/deploy-microk8s.sh
 ./scripts/deploy-microk8s.sh
 ```
 
-The script requires MicroK8s to be ready and at least 1 GiB of free disk space. At least 2 GiB is recommended.
+The script requires MicroK8s to be ready and at least 1 GiB of free disk space.
+At least 2 GiB is recommended. It also checks the resolver file configured by
+the MicroK8s kubelet. If the file is missing on a systemd-resolved host, the
+script resets and restarts that service, verifies the resolver file, and waits
+for Calico, CoreDNS, and the hostpath provisioner before deploying the app.
 After deployment, open `http://VM_IP:30080`.
 

@@ -1,4 +1,4 @@
-# KubeNova Project Status
+# KubeFortis Project Status
 
 Status date: 2026-10-21
 

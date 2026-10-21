@@ -19,6 +19,8 @@ case "$TEST" in
     echo "This restarts PostgreSQL and may cause a brief application outage."
     kubectl delete pod postgres-0 -n "$NAMESPACE"
     kubectl rollout status statefulset/postgres -n "$NAMESPACE" --timeout=10m
+    # The variables intentionally expand inside the PostgreSQL container.
+    # shellcheck disable=SC2016
     kubectl exec -n "$NAMESPACE" postgres-0 -- sh -c \
       'psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "TABLE api.items;"'
     ;;

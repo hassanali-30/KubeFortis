@@ -16,17 +16,26 @@ check() {
   fi
 }
 
-check "Three Kubernetes nodes are Ready" bash -c \
-  '[[ $(kubectl get nodes --no-headers | awk '\''$2 == "Ready" {c++} END {print c+0}'\'') -eq 3 ]]'
+three_nodes_ready() {
+  [[ "$(kubectl get nodes --no-headers | awk '$2 == "Ready" {c++} END {print c+0}')" -eq 3 ]]
+}
+
+postgres_pvc_bound() {
+  [[ "$(kubectl get pvc postgres-pvc -n "$NAMESPACE" -o jsonpath='{.status.phase}')" == Bound ]]
+}
+
+deployment_has_two_ready_replicas() {
+  local deployment="$1"
+  [[ "$(kubectl get deployment "$deployment" -n "$NAMESPACE" -o jsonpath='{.status.readyReplicas}')" == 2 ]]
+}
+
+check "Three Kubernetes nodes are Ready" three_nodes_ready
 check "PostgreSQL rollout is complete" kubectl rollout status statefulset/postgres -n "$NAMESPACE" --timeout=5s
 check "Backend rollout is complete" kubectl rollout status deployment/backend -n "$NAMESPACE" --timeout=5s
 check "Frontend rollout is complete" kubectl rollout status deployment/frontend -n "$NAMESPACE" --timeout=5s
-check "PostgreSQL PVC is Bound" bash -c \
-  '[[ $(kubectl get pvc postgres-pvc -n fullstack -o jsonpath="{.status.phase}") == Bound ]]'
-check "Frontend has two Ready replicas" bash -c \
-  '[[ $(kubectl get deployment frontend -n fullstack -o jsonpath="{.status.readyReplicas}") == 2 ]]'
-check "Backend has two Ready replicas" bash -c \
-  '[[ $(kubectl get deployment backend -n fullstack -o jsonpath="{.status.readyReplicas}") == 2 ]]'
+check "PostgreSQL PVC is Bound" postgres_pvc_bound
+check "Frontend has two Ready replicas" deployment_has_two_ready_replicas frontend
+check "Backend has two Ready replicas" deployment_has_two_ready_replicas backend
 
 echo
 echo "Live resources:"

@@ -1,4 +1,4 @@
-# Project Status
+# KubeNova Project Status
 
 Status date: 2026-10-21
 

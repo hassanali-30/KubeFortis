@@ -75,6 +75,32 @@ Typical causes are an absent Secret, an invalid password, PostgreSQL not ready,
 or the database initialization script not running because an older PVC already
 contains a database.
 
+## Pods remain in ContainerCreating and deployment times out
+
+Check recent events:
+
+```bash
+sudo microk8s kubectl get events -A --sort-by=.lastTimestamp
+```
+
+If events report that `/run/systemd/resolve/resolv.conf` does not exist, the
+host resolver service has failed and MicroK8s cannot create pod sandboxes. The
+single-VM deployment script detects and repairs this condition. To repair it
+manually, run:
+
+```bash
+sudo systemctl reset-failed systemd-resolved
+sudo systemctl restart systemd-resolved
+systemctl is-active systemd-resolved
+ls -l /run/systemd/resolve/resolv.conf
+```
+
+Wait for the `kube-system` pods to become ready before rerunning deployment:
+
+```bash
+sudo microk8s kubectl get pods -n kube-system --watch
+```
+
 ## Frontend has no external address
 
 ```bash

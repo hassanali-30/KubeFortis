@@ -43,5 +43,3 @@ jobs:
           -kubernetes-version 1.36.0
           -ignore-filename-pattern '.*example.*|kustomization.yaml'
           manifests
-
-

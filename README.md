@@ -1,9 +1,9 @@
-# KubeNova
+# KubeFortis
 
 ### Resilient Full-Stack Kubernetes Platform
 
-KubeNova is an internship-ready, on-premises Kubernetes platform built from three Ubuntu
-24.04 virtual machines. It demonstrates cluster bootstrapping, replicated
+KubeFortis is an internship-ready, on-premises Kubernetes platform built from
+three Ubuntu 24.04 virtual machines. It demonstrates cluster bootstrapping, replicated
 persistent storage, service discovery, load balancing, workload resilience,
 network isolation, and recovery testing.
 
